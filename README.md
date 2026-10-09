@@ -1,75 +1,51 @@
-# 🎀 Invitación Web — 1er Cumpleaños de Sharon Rodríguez
+# 🏎️ Invitaciones Digitales — JR Digital Solutions
 
-Invitación digital interactiva, tema **Coquette / Lazos / Baby Girl**.
+Repositorio centralizado para invitaciones interactivas de alta gama.
 
-## Stack
+## 🚀 Proyectos Activos
 
-- React 19 + TypeScript
-- Vite 7
-- Tailwind CSS v4
-- Cero dependencias de UI externas (lazos en SVG propio)
+### 1. Neythan Hernández Ramirez (4 Años)
+Invitación temática de **Carreras / Piston Cup**.
+- **URL:** [https://jrodri22.github.io/Invitacion/neythan/](https://jrodri22.github.io/Invitacion/neythan/)
+- **Características:** Semáforo interactivo, auto-scroll cinematográfico, música sincronizada y diseño anti-AI-generic.
 
-## Comandos
+### 2. Sharon Rodríguez (1 Año)
+Invitación temática **Coquette / Lazos / Baby Girl**.
+- **URL:** [https://jrodri22.github.io/Invitacion/sharon/](https://jrodri22.github.io/Invitacion/sharon/)
+- **Características:** Estética delicada, animaciones suaves y RSVP integrado.
 
-```bash
-npm install     # instalar dependencias
-npm run dev     # servidor de desarrollo
-npm run build   # build de producción (dist/)
-npm run preview # previsualizar el build
-```
+---
 
-## ⚙️ Configuración del evento
+## 🛠️ Stack Tecnológico (Estándar)
 
-**Todo el contenido editable vive en un solo archivo:**
+- **Framework:** React 18+ / Vite
+- **Lenguaje:** TypeScript
+- **Estilos:** Tailwind CSS
+- **Animaciones:** GSAP (GreenSock Animation Platform)
+- **Despliegue:** GitHub Pages (Subcarpetas por proyecto)
 
-```
-src/config/invitation.ts
-```
+## ⚙️ Guía de Configuración
 
-Ahí se configuran (cuando estén confirmados):
+Para cada proyecto, todo el contenido editable se encuentra en:
+`src/config/invitation.ts`
 
-| Dato | Campo |
-|---|---|
-| Fecha del evento | `event.date` (formato `"2026-12-31"`) |
-| Hora | `event.time` |
-| Nombre del salón | `event.locationName` |
-| Dirección | `event.address` |
-| Ubicación activa | `activeLocation`: `"pending"` / `"primary"` / `"secondary"` |
-| WhatsApp RSVP | `rsvp.whatsappNumber` (ej. `"50661969427"`) |
-| Máximo personas | `rsvp.maxGuests` |
-| Fotos | `photos: [{ src, alt }]` — archivos en `public/images/` |
-| Música | `public/music/invitation.mp3` |
+| Dato | Campo | Descripción |
+|---|---|---|
+| **Datos Básicos** | `name`, `age`, `date`, `time` | Información principal del cumpleañero y evento. |
+| **Ubicación** | `locationName`, `address`, `mapsUrl` | Detalles del lugar y enlaces a Google Maps. |
+| **RSVP** | `rsvp.whatsappNumber` | Número de teléfono para recibir confirmaciones. |
+| **Multimedia** | `photos`, `music.youtubeVideoId` | Galería de imágenes y música de fondo. |
+| **Textos** | `texts.*` | Todos los mensajes personalizados de la invitación. |
 
-Mientras un dato esté vacío (`""` / `null`), la invitación muestra
-*"Próximamente confirmaremos los detalles"* — nunca datos ficticios.
+## 🚀 Flujo de Despliegue (Deployment)
 
-### Ubicaciones
+Para agregar una nueva invitación o actualizar una existente:
 
-Ambas URLs de Google Maps son el **mismo lugar**:
+1. **Build:** Ejecutar `npm run build` en la carpeta del proyecto.
+2. **Ruta:** Configurar `base: '/Invitacion/nombre-proyecto/'` en `vite.config.ts`.
+3. **Subida:** Copiar el contenido de la carpeta `dist/` a la subcarpeta correspondiente en este repositorio:
+   `Invitacion/nombre-proyecto/`
+4. **Push:** Hacer commit y push a la rama `main`.
 
-- `primaryLocation` → Street View / 360°
-- `secondaryLocation` → ubicación GPS
-
-Cambiar `activeLocation` a `"primary"` o `"secondary"` cuando se confirme.
-
-## Estructura
-
-```
-src/
-├── components/
-│   ├── invitation/   # Hero, Welcome, AgeHighlight, Gallery,
-│   │                 # EventDetails, Countdown, Location, RSVP, Closing
-│   └── ui/           # Bow (SVG), SectionDivider, MusicButton, ScrollController
-├── config/           # invitation.ts — TODO el contenido editable
-├── hooks/            # useCountdown, useAutoScroll, useMusic, useReveal
-├── styles/           # main.css (tema Coquette)
-└── App.tsx
-```
-
-## Notas técnicas
-
-- Música inicia **solo** tras pulsar "Abrir invitación" (política autoplay móvil).
-- Auto-scroll se pausa automáticamente si el usuario hace scroll manual.
-- Animaciones respetan `prefers-reduced-motion`.
-- Imágenes con `loading="lazy"`.
-- RSVP genera mensaje de WhatsApp con confirmación previa del usuario.
+---
+*Desarrollado por Jorge Rodríguez · JR Digital Solutions 🇨🇷*
